@@ -1,3 +1,5 @@
+$border: 15px;
+$btnBordet: 0px;
 * {
   text-transform: capitalize;
   //removing input arrow
@@ -8,5 +10,34 @@
   }
   input[type="number"] {
     -moz-appearance: textfield;
+  }
+  #advance-btn {
+    border-bottom-right-radius: $btnBordet;
+    border-bottom-left-radius: $btnBordet;
+    border-top-left-radius: $border;
+    border-top-right-radius: $border;
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+  }
+  #normal-btn {
+    border-bottom-right-radius: $btnBordet;
+    border-bottom-left-radius: $btnBordet;
+    border-top-left-radius: $border;
+    border-top-right-radius: $border;
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+  }
+  #input {
+    background: #F8F9FA;
+    height: 45vh;
+    border-top-left-radius: $border;
+    border-top-right-radius: $border;
+  }
+  #output {
+    background: #F8F9FA;
+    min-height: 45vh;
+    border-bottom-left-radius: $border;
+    border-bottom-right-radius: $border;
+    transition: all 0.5s;
   }
 }
