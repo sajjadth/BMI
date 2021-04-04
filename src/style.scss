@@ -11,7 +11,7 @@ $btnBordet: 0px;
   input[type="number"] {
     -moz-appearance: textfield;
   }
-  #advance-btn {
+  #advanced-btn {
     border-bottom-right-radius: $btnBordet;
     border-bottom-left-radius: $btnBordet;
     border-top-left-radius: $border;
@@ -28,13 +28,13 @@ $btnBordet: 0px;
     margin-right: 1px !important;
   }
   #input {
-    background: #F8F9FA;
+    background: #f8f9fa;
     height: 45vh;
     border-top-left-radius: $border;
     border-top-right-radius: $border;
   }
   #output {
-    background: #F8F9FA;
+    background: #f8f9fa;
     min-height: 45vh;
     border-bottom-left-radius: $border;
     border-bottom-right-radius: $border;

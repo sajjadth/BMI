@@ -3,23 +3,26 @@ import "./style.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import $ from "jquery";
 import Normal from "./components/normal/main";
+import Advanced from "./components/advanced/main";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       bmi: 0,
-      advanced: false,
+      advanced: true,
     };
-    this.handleForm = this.handleForm.bind(this);
+    this.handleNormalForm = this.handleNormalForm.bind(this);
   }
   handleAdvance() {
     this.setState({ advanced: true });
+    this.setState({ bmi: 0 });
   }
   handleNormal() {
     this.setState({ advanced: false });
+    this.setState({ bmi: 0 });
   }
-  handleForm(e) {
+  handleNormalForm(e) {
     e.preventDefault();
     const height = Number($("#height").val());
     const weight = Number($("#weight").val());
@@ -31,6 +34,19 @@ class App extends React.Component {
       this.setState({ bmi: Number(bmiFixed) });
     }
   }
+  handleAdvancedForm(e) {
+    e.preventDefault();
+    const height = Number($("#height").val());
+    const weight = Number($("#weight").val());
+    const bmi = weight / ((height / 100) * (height / 100));
+    const genderMale = $("#gender-male");
+    const genderFemale = $("#gender-female");
+    if (genderFemale.prop("checked")) {
+      console.log("female");
+    } else if (genderMale.prop("checked")) {
+      console.log("male");
+    }
+  }
   render() {
     return (
       <React.Fragment>
@@ -39,8 +55,8 @@ class App extends React.Component {
             <input
               type="button"
               className="btn btn-secondary m-0"
-              id="advance-btn"
-              value="advance"
+              id="advanced-btn"
+              value="advanced"
               onClick={() => this.handleAdvance()}
             />
             <input
@@ -52,9 +68,12 @@ class App extends React.Component {
             />
           </div>
           {this.state.advanced === false ? (
-            <Normal formControl={this.handleForm} bmi={this.state.bmi} />
+            <Normal formControl={this.handleNormalForm} bmi={this.state.bmi} />
           ) : (
-            console.log(50)
+            <Advanced
+              formControl={this.handleAdvancedForm}
+              bmi={this.state.bmi}
+            />
           )}
         </div>
       </React.Fragment>
@@ -62,32 +81,32 @@ class App extends React.Component {
   }
   componentDidMount() {
     const normal = $("#normal-btn");
-    const advance = $("#advance-btn");
+    const advanced = $("#advanced-btn");
 
     this.state.advanced === false
       ? normal.removeClass("btn-secondary") &&
         normal.addClass("btn-light") &&
-        advance.addClass("btn-secondary") &&
-        advance.removeClass("btn-light")
+        advanced.addClass("btn-secondary") &&
+        advanced.removeClass("btn-light")
       : this.state.advanced === true
-      ? advance.addClass("btn-light") &&
-        advance.removeClass("btn-secondary") &&
+      ? advanced.addClass("btn-light") &&
+        advanced.removeClass("btn-secondary") &&
         normal.addClass("btn-secondary") &&
         normal.removeClass("btn-light")
       : null;
   }
   componentDidUpdate() {
     const normal = $("#normal-btn");
-    const advance = $("#advance-btn");
+    const advanced = $("#advanced-btn");
 
     this.state.advanced === false
       ? normal.removeClass("btn-secondary") &&
         normal.addClass("btn-light") &&
-        advance.addClass("btn-secondary") &&
-        advance.removeClass("btn-light")
+        advanced.addClass("btn-secondary") &&
+        advanced.removeClass("btn-light")
       : this.state.advanced === true
-      ? advance.addClass("btn-light") &&
-        advance.removeClass("btn-secondary") &&
+      ? advanced.addClass("btn-light") &&
+        advanced.removeClass("btn-secondary") &&
         normal.addClass("btn-secondary") &&
         normal.removeClass("btn-light")
       : null;
