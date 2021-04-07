@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       bmi: 0,
-      advanced: true,
+      advanced: false,
     };
     this.handleNormalForm = this.handleNormalForm.bind(this);
   }
