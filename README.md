@@ -1,2 +1,4 @@
-<h3>BMI</h3><br/>
-<p>Just a Daily Project</p>
+# BMI
+Just a BMI Calculator <br/>
+PS: NOT COMPLETED
+> My Fifth Project After Learning more About React, Bootstrap, Sass
